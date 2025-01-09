@@ -16,7 +16,6 @@ import { varAlpha } from 'src/theme/styles';
 import { Logo } from 'src/components/logo';
 import { Scrollbar } from 'src/components/scrollbar';
 
-import { NavUpgrade } from '../components/nav-upgrade';
 import { WorkspacesPopover } from '../components/workspaces-popover';
 
 import type { WorkspacesPopoverProps } from '../components/workspaces-popover';
@@ -120,12 +119,9 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
   return (
     <>
       <Logo />
-
       {slots?.topArea}
-
-      <WorkspacesPopover data={workspaces} sx={{ my: 2 }} />
-
       <Scrollbar fillContent>
+
         <Box component="nav" display="flex" flex="1 1 auto" flexDirection="column" sx={sx}>
           <Box component="ul" gap={0.5} display="flex" flexDirection="column">
             {data.map((item) => {
@@ -145,18 +141,19 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
                       borderRadius: 0.75,
                       typography: 'body2',
                       fontWeight: 'fontWeightMedium',
-                      color: 'var(--layout-nav-item-color)',
+                      color: 'black',
                       minHeight: 'var(--layout-nav-item-height)',
                       ...(isActived && {
                         fontWeight: 'fontWeightSemiBold',
-                        bgcolor: 'var(--layout-nav-item-active-bg)',
-                        color: 'var(--layout-nav-item-active-color)',
+                        bgcolor: '#FFCC16',
+                        color: 'black',
                         '&:hover': {
-                          bgcolor: 'var(--layout-nav-item-hover-bg)',
+                          bgcolor: '#FFF0BA',
                         },
                       }),
                     }}
                   >
+                    
                     <Box component="span" sx={{ width: 24, height: 24 }}>
                       {item.icon}
                     </Box>
@@ -176,7 +173,6 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
 
       {slots?.bottomArea}
 
-      <NavUpgrade />
     </>
   );
 }
